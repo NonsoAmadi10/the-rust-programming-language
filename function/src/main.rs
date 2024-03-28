@@ -1,3 +1,7 @@
+// Silence some warnings so they don't distract from the exercise.
+#![allow(unused_variables)]
+
+use function::{print_distance, another_function, print_array,print_difference, fibonnaci, cel_to_fah, plus_one};
 fn main() {
     println!("Hello, world!");
 
@@ -14,38 +18,14 @@ fn main() {
     println!("The value of x in fahereint is {fah}");
 
     println!("The value of the fibonnaci is {fib}");
+
+    let cords: (f32, f32) = (6.3, 15.0);
+    print_difference(cords.0, cords.1);
+    let series:[f32;2] = [0.7, 0.8];
+    print_array(series);
+    let mess = ([3, 2], 3.14, [(false, -3), (true, -100)], 5, "candy");
+    let coordinates:(f32, f32) = (0.7, 0.5);
+    print_distance(coordinates);
+
 }
 
-fn another_function(k: u32) {
-    println!("The value of k is : {k}");
-}
-
-fn plus_one(x: i32) -> i32 {
-    x + 1
-}
- 
-fn cel_to_fah(num: i32) -> i32 {
-    let result: i32 = (num *(9/5)) + 32;
-
-    result
-}
- 
-fn fibonnaci(n: i32) -> i32 {
-
-    let mut a = 0;
-    let mut b = 1;
-
-    if n < 0 {
-        a
-    } else if n == 1 {
-        b 
-    }else {
-        for elem in 2..n+1 {
-            let mut c = a + b;
-            a = b;
-            b = c;
-        }
-
-        b
-    }
-}

@@ -47,6 +47,15 @@ fn main() {
 
     let one = b.2;
 
-    println!("These are the values of {five_hundred}, {six_point_four}, {one}")
+    println!("These are the values of {five_hundred}, {six_point_four}, {one}");
+
+    let mut missiles = 8;
+    let ready = 2;
+
+    println!("Firing {} of my {} missiles...", ready, missiles);
+    missiles = missiles - ready;
+
+    println!("{} missiles left", missiles);
+
 
 }
