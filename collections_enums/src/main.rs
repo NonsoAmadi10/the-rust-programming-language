@@ -1,6 +1,8 @@
 // Silence some warnings that could distract from the exercise
 #![allow(unused_variables, unused_mut, dead_code)]
 use rand;
+use rand::seq::SliceRandom;
+use rand::thread_rng;
 // Someone is shooting arrows at a target.  We need to classify the shots.
 //
 // 1a. Create an enum called `Shot` with variants:
@@ -68,6 +70,29 @@ fn main() {
     }
 
     println!("Final point total is: {}", total);
+
+    let triangle = Shape::Triangle;
+    println!("{}", triangle.corners());
+
+    let mut nums:Vec<i32> = vec![];
+    let mut second_nums = vec![];
+
+    nums.push(1);
+    nums.push(2);
+    nums.push(3);
+    nums.push(4);
+    second_nums.push(10);
+    second_nums.push(11);
+
+    println!("{:?}", nums.last());
+
+    nums.insert(4, 7);
+    nums.insert(5, 5);
+    nums.insert(6, 8);
+    nums.sort();
+    nums.shuffle(&mut thread_rng());
+    nums.append(&mut second_nums);
+    println!("{:?}", nums);
 }
 
 // A coordinate of where an Arrow hit
@@ -103,3 +128,22 @@ fn get_arrow_coords(num: u32) -> Vec<Coord> {
     }
     coords
 }
+
+enum Shape {
+    Triangle,
+    Square,
+    Pentagon,
+    Octagon
+}
+
+impl Shape {
+    fn corners(self) -> i32{
+        match self {
+            Shape::Triangle => 3,
+            Shape::Square => 4,
+            Shape::Pentagon => 5,
+            Shape::Octagon => 8
+        }
+    }
+}
+

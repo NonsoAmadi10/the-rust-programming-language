@@ -10,6 +10,26 @@ trait Bite {
     fn bite(self: &mut Self);
 }
 
+struct Car<'a> {
+    mpg: &'a str, // Immutable reference to MPG
+    color: &'a str,
+    top_speed: i32,
+}
+
+impl<'a> Car<'a> {
+    fn set_mpg(&mut self, value: &'a str){
+        self.mpg = value;
+    }
+
+    fn set_color(&mut self, color: &'a str){
+        self.color = color;
+    }
+
+    fn set_top_speed(&mut self, speed: i32){
+        self.top_speed = speed;
+    }
+}
+
 
 // 2. Now create a struct named Grapes with a field that tracks how many grapes are left.  If you
 // need a hint, look at how it was done for Carrot at the bottom of this file (you should probably
@@ -65,6 +85,20 @@ fn main() {
 
     bunny_nibbles(&mut carrot);
     println!("Bunny nibbles for awhile: {:?}", carrot);
+
+    let stadium = Square{ height: 5, width: 10};
+    println!("{:?}", stadium.area());
+
+
+    let mut toyota = Car{ color: "red", mpg: "camry", top_speed: 20};
+
+    toyota.set_color("green");
+    toyota.set_top_speed(500);
+    toyota.set_mpg("corolla");
+
+    println!("the car has a top speed of {} and it is {} in color with mpg {}", toyota.top_speed, toyota.color, toyota.mpg);
+
+
 }
 
 #[derive(Debug)] // This enables using the debugging format string "{:?}"
@@ -78,3 +112,16 @@ impl Bite for Carrot {
         self.percent_left *= 0.8;
     }
 }
+
+struct Square {
+    height: u32,
+    width: u32,
+}
+
+impl Square{
+    fn area(&self)->u32{
+        self.height * self.width
+    }
+}
+
+

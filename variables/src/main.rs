@@ -1,3 +1,5 @@
+use std::vec;
+
 fn main() {
     
     let mut x = 6;
@@ -57,5 +59,57 @@ fn main() {
 
     println!("{} missiles left", missiles);
 
+    let (val1, val2) = (5, 2);
+    let ans = val1 % val2;
 
+    println!("{}", ans);
+
+    let mut vec_arr = vec![2, 4,6,8,10];
+    vec_arr.pop();
+    vec_arr.push(12);
+
+    println!("{:?}", vec_arr);
+
+    concat_string("nonso");
+    control_flow(30);
+
+    let mut v = vec![1, 3, 5,7];
+
+    add_vec(&mut v);
+    v.push(15);
+    println!("{:?}", v);
+
+    let w = 3;
+    println!("{:?}", add_two(w))
+}
+
+fn concat_string(s: &str){
+    let hello = String::from("hello");
+
+    println!("{}, {}", hello, s)
+} 
+
+fn control_flow(i: u32){
+    if i == 1 {
+        println!("The value is one")
+    }else if i > 50{
+        println!("The value is greater than 50")
+    }else if i < 25 {
+        println!("The value is less than 25")
+    } else if i > 25 && i < 50 {
+        println!("The value is greater than 25 but less than 50")
+    }else {
+        println!("The value is {:?}", i)
+    }
+}
+
+fn add_vec(v: &mut Vec<i32>) -> bool{
+    let first_item = v[0];
+
+    first_item == 1
+
+}
+
+fn add_two(u: i8)->i8{
+    u + 2
 }
